@@ -31,8 +31,8 @@ todoRouter.post('/', (req, res) => {
 });
 
 //DELETE
-todoRouter.delete('/', (req, res) => {
-    let id = req.params.todoId
+todoRouter.delete('/:todosid', (req, res) => {
+    let id = req.params.todosid;
     let sqlText = `DELETE FROM todos WHERE id=$1`;
     pool.query(sqlText, [id])
     .then( (result) => {

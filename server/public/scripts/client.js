@@ -2,7 +2,7 @@ $(document).ready(readyNow);
 
 function readyNow() {
     $('#submit-btn').on('click', storeTask);
-    $('#tasks-out').on('click', '.delete-btn',  deleteTask);
+    $('#tasks-out').on('click', '.delete-btn',  function () {deleteTask($(this).closest('tr').data('id'))});
     getTodos();
 }
 
@@ -55,11 +55,11 @@ function getTodos() {
 
 
 
-function deleteTask() {
+function deleteTask(todosid) {
     console.log('in deleteTask');
     $.ajax({
         method: 'DELETE',
-        url: '/todos'
+        url: `/todos/${todosid}`
     }). then (function() {;
     getTodos();
     })
