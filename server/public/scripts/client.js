@@ -2,6 +2,7 @@ $(document).ready(readyNow);
 
 function readyNow() {
     $('#submit-btn').on('click', storeTask);
+    $('#tasks-out').on('click', '.delete-btn',  deleteTask);
     getTodos();
 }
 
@@ -36,7 +37,7 @@ function getTodos() {
         for (item of response){
             webText = `<tr data-id="${item.id}">
                             <td>${item.task}</td>
-                            <td>${item.completed}</td>
+                            <td><input type="checkbox"/></td>
                             <td><button class="delete-btn">Delete</button></td>
                         </tr>`;
             $('#tasks-out').append(webText);
@@ -46,4 +47,8 @@ function getTodos() {
         console.log (`Error:`, error);
         alert ('Something bad happened')
         });
+}
+
+function deleteTask() {
+    console.log('in deleteTask');
 }
