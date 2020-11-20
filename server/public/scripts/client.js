@@ -8,7 +8,7 @@ function readyNow() {
 //Sends entered task to the POST route server side
 function storeTask(event) {
     event.preventDefault();
-    console.log($('#task-in').val());
+    let webText = '';
     let taskObject = {
         task: $('#task-in').val(),
         complete: false
@@ -31,6 +31,17 @@ function getTodos() {
         url: '/todos'
       })
       .then(function (response) {
-          console.log(response)
-      });
+        for (item of response){
+            webText = `<tr data-id="${item.id}">
+                            <td>${item.task}</td>
+                            <td>${item.completed}</td>
+                            <td><button class="delete-btn">Delete</button></td>
+                        </tr>`;
+            $('#tasks-out').append(webText);
+        }    
+      })
+      .catch ( function (error){
+        console.log (`Error:`, error);
+        alert ('Something bad happened')
+        });
 }
