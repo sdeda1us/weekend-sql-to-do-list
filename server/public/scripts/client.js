@@ -53,6 +53,8 @@ function getTodos() {
         });
 }
 
+
+
 function deleteTask() {
     console.log('in deleteTask');
     $.ajax({
