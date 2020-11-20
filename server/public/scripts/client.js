@@ -40,11 +40,19 @@ function getTodos() {
       })
       .then(function (response) {
         for (item of response){
-            webText = `<tr data-id="${item.id}">
+            if(item.completed === true){
+                webText = `<tr data-id="${item.id}">
+                            <td>${item.task}</td>
+                            <td><input type="checkbox" id="checkbox-in" checked/></td>
+                            <td><button class="delete-btn">Delete</button></td>
+                        </tr>`;
+            } else {
+                webText = `<tr data-id="${item.id}">
                             <td>${item.task}</td>
                             <td><input type="checkbox" id="checkbox-in"/></td>
                             <td><button class="delete-btn">Delete</button></td>
                         </tr>`;
+            }
             $('#tasks-out').append(webText);
         }    
       })
@@ -55,7 +63,7 @@ function getTodos() {
 }
 
 
-
+//Activates DELETE request on server side
 function deleteTask(todosid) {
     console.log('in deleteTask');
     $.ajax({
@@ -70,19 +78,19 @@ function deleteTask(todosid) {
       });
 };
 
+//Activiates a PUT request to change completed status of the task
 function postCompleted(todosid, completedStatus) {
-    console.log('in postCompleted', id, completedStatus);
+    console.log('in postCompleted', todosid, completedStatus);
     $.ajax({
         method: 'PUT',
         url: `/todos/${todosid}`,
-        data: completedStatus
+        data: {completedStatus: completedStatus}
       })
-        .then(function (response) {
-          getKoalas();
-        })
-        .catch(function (error) {
-          console.log('Error:', error);
-          alert('Something bad happened. Try again later');
-        })
-    }
+    .then(function (response) {
+        getTodos();
+    })
+    .catch(function (error) {
+        console.log('Error:', error);
+        alert('Something bad happened. Try again later');
+    })
 }

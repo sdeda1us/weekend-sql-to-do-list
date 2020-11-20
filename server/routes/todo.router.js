@@ -44,5 +44,19 @@ todoRouter.delete('/:todosid', (req, res) => {
     });
 });
 
+//PUT
+todoRouter.put('/:todosid', (req, res) => {
+    let id = req.params.todosid;
+    let checkedOut = req.body.completedStatus;
+    let sqlText = `UPDATE todos SET "completed"=$1 where id=$2;`; 
+    pool.query( sqlText, [checkedOut, id] )
+        .then( (result) => {
+            res.sendStatus(200);
+        })
+        .catch( (error) => {
+            console.log('Error from db:', error);
+            res.sendStatus(500);
+        })
+});
 
 module.exports = todoRouter;
