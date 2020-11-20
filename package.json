@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "express": "^4.17.1",
+    "jquery": "^3.5.1",
+    "node": "^15.2.1",
+    "pg": "^8.5.1"
+  },
+  "name": "weekend-sql-to-do-list",
+  "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdeda1us/weekend-sql-to-do-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdeda1us/weekend-sql-to-do-list/issues"
+  },
+  "homepage": "https://github.com/sdeda1us/weekend-sql-to-do-list#readme"
+}
