@@ -23,6 +23,10 @@ function storeTask(event) {
         $('#task-in').val('');
         getTodos();
     })
+    .catch(function (error) {
+        console.log('Error:', error);
+        alert('Something bad happened. Try again later');
+      });
 }
 
 //Activates GET route from server side
@@ -51,4 +55,14 @@ function getTodos() {
 
 function deleteTask() {
     console.log('in deleteTask');
-}
+    $.ajax({
+        method: 'DELETE',
+        url: '/todos'
+    }). then (function() {;
+    getTodos();
+    })
+    .catch(function (error) {
+        console.log('Error:', error);
+        alert('Something bad happened. Try again later');
+      });
+};

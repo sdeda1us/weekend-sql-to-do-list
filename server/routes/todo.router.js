@@ -30,6 +30,19 @@ todoRouter.post('/', (req, res) => {
         })
 });
 
+//DELETE
+todoRouter.delete('/', (req, res) => {
+    let id = req.params.todoId
+    let sqlText = `DELETE FROM todos WHERE id=$1`;
+    pool.query(sqlText, [id])
+    .then( (result) => {
+        res.sendStatus(200)
+    }) 
+    .catch((error)=>{
+        console.log('error from db', error); 
+        res.sendStatus(500)
+    });
+});
 
 
 module.exports = todoRouter;
