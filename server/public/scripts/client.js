@@ -3,7 +3,7 @@ $(document).ready(readyNow);
 function readyNow() {
     $('#submit-btn').on('click', storeTask);
     $('#tasks-out').on('click', '.delete-btn',  function () {deleteTask($(this).closest('tr').data('id'))});
-    $('#tasks-out').on('change', '#checkbox-in', postCompleted);
+    $('#tasks-out').on('change', '#checkbox-in', function () {postCompleted($(this).closest('tr').data('id'), $(this).closest('#checkbox-in').is(':checked'))});
     getTodos();
 }
 
@@ -70,7 +70,19 @@ function deleteTask(todosid) {
       });
 };
 
-function postCompleted() {
-    console.log('in postCompleted');
-    
+function postCompleted(todosid, completedStatus) {
+    console.log('in postCompleted', id, completedStatus);
+    $.ajax({
+        method: 'PUT',
+        url: `/todos/${todosid}`,
+        data: completedStatus
+      })
+        .then(function (response) {
+          getKoalas();
+        })
+        .catch(function (error) {
+          console.log('Error:', error);
+          alert('Something bad happened. Try again later');
+        })
+    }
 }
