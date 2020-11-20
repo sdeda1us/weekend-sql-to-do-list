@@ -3,8 +3,10 @@ const todoRouter = express.Router();
 // DB CONNECTION
 const pool = require('../modules/pool'); 
 
+
+//GET
 todoRouter.get('/', (req, res) => {
-    let sqlText = `SELECT * FROM todos ORDER BY task;`;
+    let sqlText = `SELECT * FROM todos ORDER BY completed, task;`;
     pool.query(sqlText)
         .then((result) => {
             console.log('Got back', result.rows);
