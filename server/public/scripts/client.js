@@ -41,7 +41,7 @@ function getTodos() {
       .then(function (response) {
         for (item of response){
             if(item.completed === true){
-                webText = `<tr data-id="${item.id}">
+                webText = `<tr data-id="${item.id}" class="checked">
                             <td>${item.task}</td>
                             <td><input type="checkbox" id="checkbox-in" checked/></td>
                             <td><button class="delete-btn">Delete</button></td>
