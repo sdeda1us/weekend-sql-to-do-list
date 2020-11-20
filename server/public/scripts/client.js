@@ -2,13 +2,13 @@ $(document).ready(readyNow);
 
 function readyNow() {
     $('#submit-btn').on('click', storeTask);
+    getTodos();
 }
 
 
 //Sends entered task to the POST route server side
 function storeTask(event) {
     event.preventDefault();
-    let webText = '';
     let taskObject = {
         task: $('#task-in').val(),
         complete: false
@@ -26,6 +26,8 @@ function storeTask(event) {
 
 //Activates GET route from server side
 function getTodos() {
+    let webText = '';
+    $('#tasks-out').empty();
     $.ajax({
         type: 'GET',
         url: '/todos'
