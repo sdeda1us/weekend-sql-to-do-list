@@ -8,6 +8,7 @@ function readyNow() {
 //Sends entered task to the POST route server side
 function storeTask(event) {
     event.preventDefault();
+    console.log($('#task-in').val());
     let taskObject = {
         task: $('#task-in').val(),
         complete: false
@@ -29,5 +30,7 @@ function getTodos() {
         type: 'GET',
         url: '/todos'
       })
-      .then(console.log(resposne));
+      .then(function (response) {
+          console.log(response)
+      });
 }
