@@ -15,28 +15,17 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
 
-body {
-    background-color: #fefefa; /*Baby Powder*/
-    margin: 5px;
-}
-
-header {
-    margin-top: 5%;
-    text-align: center;
-    /*font-family: 'Architects Daughter';*/
-    color: blue;
-    background-color: orange;
-}
 
 
 .checked{
-    background-color: violet;
+    background-color: grey;
 }
 
 .linethrough {
     text-decoration: line-through;
 }
 
+/*
 #formSpace{
     margin-top: 2%;
     text-align: center;
@@ -46,8 +35,7 @@ header {
     margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
-    /*font-family: 'Abel';*/
+    font-family: 'Abel';
     font-size: 30px;
 }
-
-
+*/
