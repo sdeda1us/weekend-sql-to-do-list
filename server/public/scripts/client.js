@@ -15,36 +15,19 @@ function storeTask(event) {
         task: $('#task-in').val(),
         complete: false
     }
-    swal({
-        title: "Are you sure?",      
-        text: "Once deleted, you will not be able to recover this imaginary file!",      
-        icon: "warning",      
-        buttons: true,      
-        dangerMode: true,    
+    $.ajax({
+        type: 'POST',
+        url: '/todos',
+        data: taskObject
     })
-    .then((willDelete) => {      
-        if (willDelete) {        
-            swal("Poof! Your task has been deleted!", {
-                icon: "success",        
-            });
-        $.ajax({
-            type: 'POST',
-            url: '/todos',
-            data: taskObject
-        })
-        .then(function(response) {
-            $('#task-in').val('');
-            getTodos();
-        })
-        .catch(function (error) {
-            console.log('Error:', error);
-            alert('Something bad happened. Try again later');
-        })
-        } else {
-            swal("Your task is safe!");      
-        }
-        
-    
+    .then(function(response) {
+        $('#task-in').val('');
+        getTodos();
+    })
+    .catch(function (error) {
+        console.log('Error:', error);
+        alert('Something bad happened. Try again later');
+    })
 }
 
 //Activates GET route from server side
@@ -93,18 +76,38 @@ function getTodos() {
 //Activates DELETE request on server side
 function deleteTask(todosid) {
     console.log('in deleteTask');
-    $.ajax({
-        method: 'DELETE',
-        url: `/todos/${todosid}`
-    }). then (function() {;
-    getTodos();
+    swal({
+        title: "Are you sure?",      
+        text: "Once deleted, you will not be able to recover this imaginary file!",      
+        icon: "warning",      
+        buttons: true,      
+        dangerMode: true,    
+    })
+    .then((willDelete) => {      
+        if (willDelete) {        
+            swal("Poof! Your task has been deleted!", {
+                icon: "success",        
+            });
+        $.ajax({
+            method: 'DELETE',
+            url: `/todos/${todosid}`
+        })
+        .then (function() {;
+             getTodos();
+        })
+        .catch(function (error) {
+            console.log('Error:', error);
+            alert('Something bad happened. Try again later');
+        });
+        } else {
+            swal("You can do it! STAY MOTIVATED!"); //Affirmation from Kimberly Orchard
+        }
     })
     .catch(function (error) {
         console.log('Error:', error);
         alert('Something bad happened. Try again later');
-      });
-};
-
+    })
+}
 //Activiates a PUT request to change completed status of the task
 function postCompleted(todosid, completedStatus) {
     console.log('in postCompleted', todosid, completedStatus);
