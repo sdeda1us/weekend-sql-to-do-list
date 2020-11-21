@@ -1,5 +1,6 @@
 const express = require('express');
 const todoRouter = express.Router();
+const moment = require('moment');
 // DB CONNECTION
 const pool = require('../modules/pool'); 
 
@@ -9,7 +10,6 @@ todoRouter.get('/', (req, res) => {
     let sqlText = `SELECT * FROM todos ORDER BY completed, task;`;
     pool.query(sqlText)
         .then((result) => {
-            console.log('Got back', result.rows);
             res.send(result.rows);
         }).catch((error) => {
             console.log('Error from db', error);
@@ -50,8 +50,9 @@ todoRouter.delete('/:todosid', (req, res) => {
 todoRouter.put('/:todosid', (req, res) => {
     let id = req.params.todosid;
     let checkedOut = req.body.completedStatus;
-    let sqlText = `UPDATE todos SET "completed"=$1 where id=$2;`; 
-    pool.query( sqlText, [checkedOut, id] )
+    let timeVar = moment().format('lll');
+    let sqlText = `UPDATE todos SET "completed"=$1, complete_time=$2 WHERE id=$3;`; 
+    pool.query( sqlText, [checkedOut, timeVar, id] )
         .then( (result) => {
             res.sendStatus(200);
         })
