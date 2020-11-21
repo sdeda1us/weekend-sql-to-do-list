@@ -42,15 +42,17 @@ function getTodos() {
         for (item of response){
             if(item.completed === true){
                 webText = `<tr data-id="${item.id}" class="checked">
-                            <td>${item.task}</td>
+                            <td class="linethrough">${item.task}</td>
                             <td><input type="checkbox" id="checkbox-in" checked/></td>
                             <td><button class="delete-btn">Delete</button></td>
+                            <td>${item.complete_time}</td>
                         </tr>`;
             } else {
                 webText = `<tr data-id="${item.id}">
                             <td>${item.task}</td>
                             <td><input type="checkbox" id="checkbox-in"/></td>
                             <td><button class="delete-btn">Delete</button></td>
+                            <td>&nbsp;</td>
                         </tr>`;
             }
             $('#tasks-out').append(webText);
