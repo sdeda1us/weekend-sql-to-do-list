@@ -5,7 +5,8 @@
     "jquery": "^3.5.1",
     "moment": "^2.29.1",
     "node": "^15.2.1",
-    "pg": "^8.5.1"
+    "pg": "^8.5.1",
+    "sweetalert": "^2.1.2"
   },
   "name": "weekend-sql-to-do-list",
   "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",

@@ -15,19 +15,36 @@ function storeTask(event) {
         task: $('#task-in').val(),
         complete: false
     }
-    $.ajax({
-        type: 'POST',
-        url: '/todos',
-        data: taskObject
+    swal({
+        title: "Are you sure?",      
+        text: "Once deleted, you will not be able to recover this imaginary file!",      
+        icon: "warning",      
+        buttons: true,      
+        dangerMode: true,    
     })
-    .then(function(response) {
-        $('#task-in').val('');
-        getTodos();
-    })
-    .catch(function (error) {
-        console.log('Error:', error);
-        alert('Something bad happened. Try again later');
-      });
+    .then((willDelete) => {      
+        if (willDelete) {        
+            swal("Poof! Your task has been deleted!", {
+                icon: "success",        
+            });
+        $.ajax({
+            type: 'POST',
+            url: '/todos',
+            data: taskObject
+        })
+        .then(function(response) {
+            $('#task-in').val('');
+            getTodos();
+        })
+        .catch(function (error) {
+            console.log('Error:', error);
+            alert('Something bad happened. Try again later');
+        })
+        } else {
+            swal("Your task is safe!");      
+        }
+        
+    
 }
 
 //Activates GET route from server side
