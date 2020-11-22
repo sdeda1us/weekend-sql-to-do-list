@@ -8,6 +8,7 @@ const pool = require('../modules/pool');
 //GET
 todoRouter.get('/', (req, res) => {
     let sqlText = `SELECT * FROM todos ORDER BY completed, task;`;
+    console.log(req.query.order);
     pool.query(sqlText)
         .then((result) => {
             res.send(result.rows);
