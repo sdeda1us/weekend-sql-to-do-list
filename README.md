@@ -4,26 +4,66 @@
 ![FORKS](https://img.shields.io/github/forks/sdeda1us/jquery-salary-calculator.svg?style=social)
 
 
-# Project Name
+# Weekend SQL Task List
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+
 
 ## Description
+Duration: Weekend - 12 hours
 
-Your project description goes here. What problem did you solve? How did you solve it?
+This full stack application allows the user to create tasks, mark them as completed and delete finished tasks. When tasks are marked as complete, the time the complete button was clicked logs the time so the user can see when the task was finished. When the user selects to delete a task, a smart alert will pop up to confirm that the user truly wishes to delete the task from the list.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+## Screen Shots
 
-
-Pre-Requisites:
-Express
-Node
-PostGres SQL
-SweetAlert
+The application in action
+![Application in Action](task_list_at_work.png)
 
 
-Stuff we used: 
-Jquery
-Bootstrap
-HTML
 
+
+## Installation
+
+### Required
+
+- Express
+- Node
+- PostGres SQL
+- SweetAlert
+- Moment
+
+1. Install the required dependencies using npm.
+2. Run npm start from comman line
+3. Open localhost:5000
+
+## Built With
+
+- HTML
+- CSS
+- Jquery
+- Node
+- Express
+- PostGres SQL
+- Bootstrap
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Acknowledgement
+Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. 
+
+Special thanks to my learnign group for this week from my Vatti Cohort:
+- [Carl Barfuss](https://github.com/carlbarfuss)
+- [Jim Bird](https://github.com/jbird55044)
+- [Malik Elate](https://github.com/MalikElate)
+
+Extra Thanks to Late Night and Early Morning Work Consultations from:
+- [Josie Fredericksen](https://github.com/freder48)
+- [Kimberly Orchard](https://github.com/korchard)
+
+And last but never least, my Prime primary instructor:
+-[Mary Mosman]
+
+## Support
+If you have suggestions or issues, please email me at [steven.maloney@gmail.com](mailto:steven.maloney@gmail.com)
