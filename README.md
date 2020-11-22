@@ -25,15 +25,20 @@ The application in action
 
 ### Required
 
+#### npm Dependencies
 - Express
 - Node
-- PostGres SQL
 - SweetAlert
 - Moment
 
+#### SQL Reuirments
+- Postgre SQL
+
 1. Install the required dependencies using npm.
-2. Run npm start from comman line
-3. Open localhost:5000
+2. Create a postgre SQL database named "weekend-to-do-app" using an app like Postico
+3. Run the table creation SQL query from the database.sql file within the application files
+3. Run npm start from comman line
+4. Open localhost:5000
 
 ## Built With
 
