@@ -22,7 +22,7 @@ if(process.env.DATABASE_URL){
     }; 
 }
 
-const pool = new Pool(config);
+const pool = new pg.Pool(config);
 
 // When we connect to the database, fun function 
 pool.on('connect', () => {
