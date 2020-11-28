@@ -9,7 +9,7 @@ let config = {};
 if(process.env.DATABASE_URL){
     config = {
         connectionString: process.env.DATABASE_URL,
-        ssl: {rejectUnauthenticated: false}
+        ssl: {rejectUnauthorized: false}
     }
 } else {
     config = {
